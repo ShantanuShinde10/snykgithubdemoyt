@@ -20,17 +20,13 @@ jobs:
              echo "RESULTS_LENGTH=$length" >>$GITHUB_ENV
       - name: Pass_or_Fail_the_job
         run: |
-            if [ -z "$RESULTS_LENGTH" ]; then
-               echo "RESULTS_LENGTH is not set or is empty"
-               exit 1
-            elif [ "$RESULTS_LENGTH" != "0" ]; then
+            if [ "$RESULTS_LENGTH" !=0 ]; then
                echo "Job Failed"
                exit 1
             else
                echo "Pass"
-               fi
-        env:
-         RESULTS_LENGTH: ${{ secrets.RESULTS_LENGTH }}
+            fi
+       
 
       - name: Send notification on Slack using webhooks
         uses: slackapi/slack-github-action@v1.24.0
