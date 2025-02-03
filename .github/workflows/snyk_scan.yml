@@ -20,7 +20,7 @@ jobs:
              echo "RESULTS_LENGTH=$length" >>$GITHUB_ENV
       - name : Pass_or_Fail_the_job
         run: |
-            if [ "$RESUKTS_LENGTH" != 0 ]; then
+            if [ "$RESULTS_LENGTH" != 0 ]; then
                 echo "Job Failed"
                 exit 1
             else 
@@ -34,7 +34,7 @@ jobs:
         with:
           payload: |
             {
-              "text": "*The Snyk scan result for repo , snykgithubdemoyt, is : ${{ job.status }}* \n*Number of vulnerabilities : ${{ env.RESULTS_LENGTH}}* \n*Details:https://github.com/${{ github.repositry }}/actions/runs/${{ github.run_id}}"
+              "text": "*The Snyk scan result for repo , snykgithubdemoyt, is : ${{ job.status }}* \n*Number of vulnerabilities : ${{ env.RESULTS_LENGTH }}* \n*Details:https://github.com/${{ github.repositry }}/actions/runs/${{ github.run_id }}"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
