@@ -27,7 +27,6 @@ jobs:
                 echo "Pass"
             fi
 
-
       - name: Send notification on Slack using webhooks
         uses: slackapi/slack-github-action@v1.24.0
         if: always() 
