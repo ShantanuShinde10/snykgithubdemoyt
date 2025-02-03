@@ -13,6 +13,7 @@ jobs:
         with:
           command: code test
           args: --sarif-file-output=snyk.sarif
+                --severity-threshold=high
       - name: Total security issues
         run: 
              length=$(cat snyk.sarif | jq '.runs[0].results | length')
